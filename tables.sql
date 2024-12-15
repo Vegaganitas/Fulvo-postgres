@@ -3,8 +3,7 @@ CREATE TABLE main.usuarios (
     nombre VARCHAR(50),
     apellido VARCHAR(50),
     email VARCHAR(100) UNIQUE,
-    contraseña TEXT,
-    rol VARCHAR(20)
+    contraseña TEXT
 );
 
 CREATE TABLE main.equipos (
