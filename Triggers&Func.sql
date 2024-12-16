@@ -1,0 +1,17 @@
+ALTER TABLE main.users
+ADD COLUMN age INT;
+
+
+CREATE OR REPLACE FUNCTION main.update_age()
+RETURNS TRIGGER AS $$
+BEGIN
+  NEW.age := DATE_PART('year', AGE(NEW.birthdate));
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+
+CREATE TRIGGER set_age
+BEFORE INSERT OR UPDATE ON main.users
+FOR EACH ROW EXECUTE FUNCTION update_age();
+
