@@ -40,3 +40,18 @@ ALTER TABLE main.matches RENAME COLUMN id_equipo_local TO home_team_id;
 ALTER TABLE main.matches RENAME COLUMN id_equipo_visitante TO away_team_id;
 ALTER TABLE main.matches RENAME COLUMN fecha TO date;
 ALTER TABLE main.matches RENAME COLUMN resultado TO result;
+
+
+
+
+
+
+ALTER TABLE main.users
+ALTER COLUMN dni TYPE INT USING dni::INTEGER;
+
+ALTER TABLE main.users
+ALTER COLUMN phone TYPE BIGINT USING phone::BIGINT;
+
+ALTER TABLE main.users
+ADD COLUMN genre VARCHAR(20) COLLATE pg_catalog."default",
+ADD COLUMN address VARCHAR(255) COLLATE pg_catalog."default";
