@@ -41,6 +41,13 @@ ALTER TABLE main.matches RENAME COLUMN id_equipo_visitante TO away_team_id;
 ALTER TABLE main.matches RENAME COLUMN fecha TO date;
 ALTER TABLE main.matches RENAME COLUMN resultado TO result;
 
+-- Actualización de la tabla main.leagues
+ALTER TABLE main.leagues
+ADD COLUMN genre VARCHAR(20) COLLATE pg_catalog."default",    -- Masculino, Femenino, Mixto
+ADD COLUMN minimum_age INTEGER CHECK (minimum_age >= 0),    -- Edad mínima válida
+ADD COLUMN id_admin INTEGER NOT NULL,                      -- ID del administrador (FK)
+ADD CONSTRAINT fk_id_admin FOREIGN KEY (id_admin) 
+REFERENCES main.users (id) ON DELETE CASCADE;
 
 
 
