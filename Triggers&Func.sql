@@ -13,5 +13,5 @@ $$ LANGUAGE plpgsql;
 
 CREATE TRIGGER set_age
 BEFORE INSERT OR UPDATE ON main.users
-FOR EACH ROW EXECUTE FUNCTION update_age();
+FOR EACH ROW EXECUTE FUNCTION main.update_age();
 
